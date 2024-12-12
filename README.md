@@ -1,31 +1,18 @@
-# Build an API with Django and Nextjs
+## CI with GitHub Actions
 
-This is a simple example of how to build an API with Django, React, and Docker. You can find the
-article concerning this code here on my [blog](https://koladev.xyz/posts/django-nextjs-crud/).
+The repository includes a GitHub Actions workflow that:
 
-## Starting with Django and React
+1. Builds the Docker images for both the frontend and backend.
+2. Pushes the images to **GitHub Container Registry (GHCR)**.
 
-First launch the API server.
+### Steps to Configure
 
-```bash
-cd django-api-nextjs
-python3.11 -m venv venv
-pip install -r requirements.txt
+1. **Enable GHCR Access**:
+   Ensure GHCR is enabled for your repository.
 
-python manage.py migrate
-python manage.py runserver
-```
+2. **Set up Secrets**:
+   Add the following secrets to your repository:
+   - `GHCR_PAT`: A personal access token with `write:packages` and `read:packages` permissions.
 
-The API server will be available at `http://localhost:8000/`.
-
-Then launch the React client.
-
-```bash
-cd menu-frontend
-npm install
-npm run dev
-```
-
-The React client will be available at `http://localhost:3000/`.
-
-Feel free to open issues on the [GitHub repository](https://github.com/koladev32/django-api-nextjs) if you have any questions.
+3. **Trigger the Workflow**:
+   Push changes to the `master` branch to trigger the workflow.
