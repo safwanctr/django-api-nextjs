@@ -51,7 +51,7 @@ jobs:
           sudo apt-get -y install podman
 
       - name: Navigate to Frontend Directory
-        run: cd frontend
+        run: cd menu-frontend
 
       - name: Build Frontend Image
         run: |

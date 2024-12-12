@@ -1,18 +1,21 @@
-## CI with GitHub Actions
+# Containerization with Podman 
 
-The repository includes a GitHub Actions workflow that:
+This project is integrated with Continuous Integration (CI) using **Podman** to automate container builds. Podman is a daemonless container engine that provides a fully compatible experience for managing containers and images.
 
-1. Builds the Docker images for both the frontend and backend.
-2. Pushes the images to **GitHub Container Registry (GHCR)**.
+## CI with Podman
 
-### Steps to Configure
+The project leverages Podman for container management in the CI pipeline. The CI setup automates the following tasks:
 
-1. **Enable GHCR Access**:
-   Ensure GHCR is enabled for your repository.
+- **Build** container images with Podman.
+- **Push** container images to the GitHub Container Registry (GHCR).
 
-2. **Set up Secrets**:
-   Add the following secrets to your repository:
-   - `GHCR_PAT`: A personal access token with `write:packages` and `read:packages` permissions.
+### CI Pipeline Overview
 
-3. **Trigger the Workflow**:
-   Push changes to the `master` branch to trigger the workflow.
+- **Podman** is used to build, manage, and run containers in the CI environment.
+- The CI configuration ensures that container images are built and pushed to GitHub Container Registry (GHCR) when changes are made to the codebase.
+
+### How CI with Podman Works
+
+1. **Build**: Podman is used to build the container image from the `Containeerfile`
+2. **Push**: On successful build, the container image is pushed to the GitHub Container Registry (GHCR).
+3. **Deploy**: The container image can then be deployed to various environments.
