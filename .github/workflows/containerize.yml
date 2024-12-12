@@ -55,7 +55,7 @@ jobs:
 
       - name: Build Frontend Image
         run: |
-          podman build -t ghcr.io/${{ github.repository }}/frontend:latest -f menu-frontend/Containerfile frontend
+          podman build -t ghcr.io/${{ github.repository }}/frontend:latest -f Containerfile .
 
       - name: Push Frontend Image to GHCR
         run: |
