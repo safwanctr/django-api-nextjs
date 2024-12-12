@@ -1,4 +1,4 @@
-name: Containerize and Push to GHCR
+name: Containerize and Deploy with Podman
 
 on:
   push:
@@ -6,29 +6,59 @@ on:
       - master
 
 jobs:
-  containerize:
-    name: Build and Push Frontend and Backend
+  backend:
+    name: Build and Push Backend Image
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v2
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          python-version: 3.9
 
-      - name: Build and Push Frontend Image
+      - name: Install Podman
         run: |
-          cd menu-frontend
-          docker build -t ghcr.io/${{ github.repository }}/frontend:latest .
-          docker push ghcr.io/${{ github.repository }}/frontend:latest
+          sudo apt-get update
+          sudo apt-get -y install podman
 
-      - name: Build and Push Backend Image
+      - name: Build Backend Image
         run: |
-          cd $GITHUB_WORKSPACE # Go back to the root
-          docker build -t ghcr.io/${{ github.repository }}/backend:latest .
-          docker push ghcr.io/${{ github.repository }}/backend:latest
+          podman build -t ghcr.io/${{ github.repository }}/backend:latest -f Containerfile .
+
+      - name: Push Backend Image to GHCR
+        run: |
+          echo ${{ secrets.GHCR_PAT }} | podman login ghcr.io -u ${{ github.actor }} --password-stdin
+          podman push ghcr.io/${{ github.repository }}/backend:latest
+
+  frontend:
+    name: Build and Push Frontend Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Podman
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install podman
+
+      - name: Navigate to Frontend Directory
+        run: cd frontend
+
+      - name: Build Frontend Image
+        run: |
+          podman build -t ghcr.io/${{ github.repository }}/frontend:latest -f frontend/Containerfile frontend
+
+      - name: Push Frontend Image to GHCR
+        run: |
+          echo ${{ secrets.GHCR_PAT }} | podman login ghcr.io -u ${{ github.actor }} --password-stdin
+          podman push ghcr.io/${{ github.repository }}/frontend:latest
