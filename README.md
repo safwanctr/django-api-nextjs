@@ -16,6 +16,6 @@ The project leverages Podman for container management in the CI pipeline. The CI
 
 ### How CI with Podman Works
 
-1. **Build**: Podman is used to build the container image from the `Containeerfile`
+1. **Build**: Podman is used to build the container image from the `Containerfile`
 2. **Push**: On successful build, the container image is pushed to the GitHub Container Registry (GHCR).
 3. **Deploy**: The container image can then be deployed to various environments.
