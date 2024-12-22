@@ -50,12 +50,12 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install podman
 
-      - name: Navigate to Frontend Directory
-        run: cd menu-frontend
+      # - name: Navigate to Frontend Directory
+      #   run: cd menu-frontend
 
       - name: Build Frontend Image
         run: |
-          podman build -t ghcr.io/${{ github.repository }}/frontend:latest -f Containerfile .
+          podman build -t ghcr.io/${{ github.repository }}/frontend:latest -f menu-frontend/Containerfile menu-frontend/
 
       - name: Push Frontend Image to GHCR
         run: |
