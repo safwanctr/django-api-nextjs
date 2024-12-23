@@ -87,7 +87,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "dev_db",
-        "USER": "postgresql_admin",
+        "USER": "postgresql_admin@postgresql-server-dev1.postgres.database.azure.com",
         "PASSWORD": "Bc@123456789",
         "HOST": "postgresql-server-dev1.postgres.database.azure.com",
         "PORT": "5432",
