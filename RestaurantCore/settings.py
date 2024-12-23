@@ -91,6 +91,9 @@ DATABASES = {
         "PASSWORD": "Bc@123456789",
         "HOST": "postgresql-server-dev1.postgres.database.azure.com",
         "PORT": "5432",
+        "OPTIONS": {
+            "sslmode": "require",  # Ensure SSL connection
+        },
     }
 }
 
