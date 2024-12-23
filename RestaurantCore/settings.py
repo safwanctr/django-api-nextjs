@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-k*rrfqk!9zr39ed7aq2u(d+ow1a8a=&klxapq835bn(*c0_fq8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['4.156.243.199']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -85,8 +85,12 @@ WSGI_APPLICATION = "RestaurantCore.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "dev_db",
+        "USER": "postgresql_admin",
+        "PASSWORD": "Bc@123456789",
+        "HOST": "postgresql-server-dev1.postgres.database.azure.com",
+        "PORT": "5432",
     }
 }
 
