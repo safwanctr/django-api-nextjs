@@ -86,16 +86,17 @@ WSGI_APPLICATION = "RestaurantCore.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "dev_db",
-        "USER": "postgresql_admin@postgresql-server-dev1.postgres.database.azure.com",
-        "PASSWORD": "Bc@123456789",
-        "HOST": "postgresql-server-dev1.postgres.database.azure.com",
+        "NAME": "dev_db",  # Replace with your actual DB name
+        "USER": "postgresql_admin@postgresql-server-dev1.postgres.database.azure.com",  # Use the correct admin user
+        "PASSWORD": "Bc@123456789",  # Use your actual password
+        "HOST": "dev.postgres.database.azure.com",  # Use the private DNS zone name
         "PORT": "5432",
         "OPTIONS": {
             "sslmode": "require",  # Ensure SSL connection
         },
     }
 }
+
 
 
 # Password validation
