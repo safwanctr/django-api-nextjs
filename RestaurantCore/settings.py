@@ -89,7 +89,7 @@ DATABASES = {
         "NAME": "dev_db",  # Replace with your actual DB name
         "USER": "postgresql_admin",  # Use the correct admin user
         "PASSWORD": "Bc@123456789",  # Use your actual password
-        "HOST": "dev.postgres.database.azure.com",  # Use the private DNS zone name
+        "HOST": "postgresql-server-dev1.postgres.database.azure.com",  # Use the private DNS zone name
         "PORT": "5432",
         "OPTIONS": {
             "sslmode": "require",  # Ensure SSL connection
