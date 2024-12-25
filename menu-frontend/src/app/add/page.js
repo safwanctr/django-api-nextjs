@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
  * @param {Object} data The menu item data to be sent.
  */
 async function createMenu(data) {
-  const res = await fetch("http://backend-service.default.svc.cluster.local:8000/api/menu/", {
+  const res = await fetch("http://10.0.53.174:8000/api/menu/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
