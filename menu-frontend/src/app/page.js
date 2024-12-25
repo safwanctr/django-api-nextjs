@@ -8,7 +8,7 @@
    * @param {number} id The ID of the menu item to retrieve.
    */
   async function deleteMenu(id) {
-    const res = await fetch(`http://10.0.53.174:8000/api/menu/${id}/`, {
+    const res = await fetch(`http://backend-service.default.svc.cluster.local/api/menu/${id}/`, {
       method: "DELETE",
     });
     if (!res.ok) {
@@ -21,7 +21,7 @@
    * Fetches menu data from the server.
    */
   async function getData() {
-    const res = await fetch("http://10.0.53.174:8000/api/menu/");
+    const res = await fetch("http://backend-service.default.svc.cluster.local/api/menu/");
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
