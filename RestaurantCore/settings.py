@@ -88,7 +88,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "postgres",  # Replace with your actual DB name
         "USER": "postgresql_admin@postgresql-server-dev1",  # Use the correct admin user
-        "PASSWORD": "Bc%40123456789",  # Use your actual password
+        "PASSWORD": "Bc@123456789",  # Use your actual password
         "HOST": "postgresql-server-dev1.postgres.database.azure.com",  # Use the private DNS zone name
         "PORT": "5432",
         "OPTIONS": {
