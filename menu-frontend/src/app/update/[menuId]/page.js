@@ -8,7 +8,8 @@ import { useRouter } from "next/navigation";
  * @param {number} id The ID of the menu item to retrieve.
  */
 async function getMenu(id) {
-  const res = await fetch(`http://9.169.177.187:8000/api/menu/${id}/`);
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL; // Use the env variable from Kubernetes
+  const res = await fetch(`${backendUrl}/api/menu/${id}/`);
   if (!res.ok) {
     throw new Error("Failed to retrieve menu");
   }
@@ -21,7 +22,8 @@ async function getMenu(id) {
  * @param {Object} data The updated data for the menu item.
  */
 async function updateMenu(id, data) {
-  const res = await fetch(`http://9.169.177.187:8000/api/menu/${id}/`, {
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL; // Use the env variable from Kubernetes
+  const res = await fetch(`${backendUrl}/api/menu/${id}/`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

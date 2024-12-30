@@ -8,7 +8,8 @@ import { useRouter } from "next/navigation";
  * @param {Object} data The menu item data to be sent.
  */
 async function createMenu(data) {
-  const res = await fetch("http://9.169.177.187:8000/api/menu/", {
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL; // Use the environment variable for the backend URL
+  const res = await fetch(`${backendUrl}/api/menu/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
